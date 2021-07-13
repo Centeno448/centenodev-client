@@ -1,11 +1,8 @@
 import React from 'react';
+import TestApi from './components/TestApi';
 
 function App() {
-  return (
-    <div>
-      Hello World
-    </div>
-  );
+  return <TestApi />;
 }
 
 export default App;
