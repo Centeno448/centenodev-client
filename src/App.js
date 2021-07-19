@@ -1,8 +1,8 @@
 import React from 'react';
-import TestApi from './components/TestApi';
+import Routes from './Routes';
 
 function App() {
-  return <TestApi />;
+  return <Routes />;
 }
 
 export default App;
