@@ -1,6 +1,10 @@
 import * as types from './actionTypes';
 import { getAllProjects } from '../../api/projectApi';
 
+export function loadProjectsStart() {
+  return { type: types.LOAD_PROJECTS_START };
+}
+
 export function loadProjectsSuccess(projects) {
   return { type: types.LOAD_PROJECTS_SUCCESS, projects };
 }
@@ -11,6 +15,8 @@ export function loadProjectsFail(error) {
 
 export function loadProjects() {
   return async function (dispatch) {
+    dispatch(loadProjectsStart());
+
     const response = await getAllProjects();
 
     if (!response || !response.ok) {

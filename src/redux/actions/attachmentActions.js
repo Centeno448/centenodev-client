@@ -1,6 +1,10 @@
 import * as types from './actionTypes';
 import { getAllAttachments } from '../../api/attachmentApi';
 
+export function loadAttachmentStart() {
+  return { type: types.LOAD_ATTACHMENTS_START };
+}
+
 export function loadAttachmentsSuccess(attachments) {
   return { type: types.LOAD_ATTACHMENTS_SUCCESS, attachments };
 }
@@ -11,6 +15,8 @@ export function loadAttachmentsFail(error) {
 
 export function loadAttachments(projectGuid) {
   return async function (dispatch) {
+    dispatch(loadAttachmentStart());
+
     const response = await getAllAttachments(projectGuid);
 
     if (!response.ok) {
