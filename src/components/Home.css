@@ -1,0 +1,47 @@
+.profile-container {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.info-container {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.lenguage-container {
+  margin: 0 auto;
+  max-width: 500px;
+  height: 80px;
+}
+
+.language-title {
+  margin: auto;
+  float: left;
+}
+
+.language-list {
+  float: right;
+}
+
+.framework-container {
+  margin: 0 auto;
+  max-width: 500px;
+  height: 80px;
+}
+
+.framework-title {
+  margin: auto;
+  float: right;
+}
+
+.framework-list {
+  float: left;
+}
+
+.projects-container {
+  border: 1px solid black;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 500px;
+}
