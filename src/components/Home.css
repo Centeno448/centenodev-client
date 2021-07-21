@@ -3,6 +3,19 @@
   margin: 0 auto;
 }
 
+.profile-photo-container {
+  margin: 0 auto;
+  border: 1px solid black;
+  width: 150px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-photo {
+  width: 150px;
+}
+
 .info-container {
   max-width: 500px;
   margin: 0 auto;

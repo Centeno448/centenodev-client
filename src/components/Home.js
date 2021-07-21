@@ -3,6 +3,7 @@ import DiegoImg from '../assets/img/white.png';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -10,7 +11,9 @@ const Home = () => {
       <div className="profile-container">
         <h1>Diego Centeno</h1>
         <h2>Fullstack Developer</h2>
-        <img style={{ width: 150 }} alt="foto diego" src={DiegoImg} />
+        <div className="profile-photo-container">
+          <img className="profile-photo" alt="foto diego" src={DiegoImg} />
+        </div>
       </div>
 
       <div className="info-container">
@@ -69,7 +72,7 @@ const Home = () => {
             </p>
           </div>
         </OwlCarousel>
-        <p>View all projects</p>
+        <Link to="/project/1">View all projects</Link>
       </div>
     </>
   );

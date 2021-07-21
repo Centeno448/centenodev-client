@@ -1,0 +1,26 @@
+.header {
+  display: block;
+  background-color: #3454b6;
+  padding: 15px 0 15px 0;
+}
+
+.header-title {
+  font-size: xx-large;
+  margin: 0px 7px 0px 10px;
+}
+
+.header-role {
+  font-size: large;
+}
+
+nav {
+  position: relative;
+  top: 50%;
+  float: right;
+}
+
+.header-link {
+  margin-right: 35px;
+  text-decoration: none;
+  color: white;
+}
