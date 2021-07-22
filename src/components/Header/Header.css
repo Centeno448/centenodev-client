@@ -1,26 +1,20 @@
-.header {
-  display: block;
-  background-color: #3454b6;
-  padding: 15px 0 15px 0;
+.navbar {
+  border-bottom: 3px solid black;
 }
-
-.header-title {
+.nav-title {
   font-size: xx-large;
   margin: 0px 7px 0px 10px;
 }
 
-.header-role {
+.nav-subtitle {
+  margin-left: 5px;
   font-size: large;
 }
 
-nav {
-  position: relative;
-  top: 50%;
-  float: right;
+.nav-link {
+  color: black;
 }
 
-.header-link {
-  margin-right: 35px;
-  text-decoration: none;
-  color: white;
+.active {
+  color: #00b4c2;
 }

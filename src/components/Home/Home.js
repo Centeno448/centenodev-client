@@ -1,5 +1,5 @@
 import './Home.css';
-import DiegoImg from '../assets/img/white.png';
+import DiegoImg from '../../assets/img/white.png';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -8,21 +8,30 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <>
-      <div className="profile-container">
-        <h1>Diego Centeno</h1>
-        <h2>Fullstack Developer</h2>
-        <div className="profile-photo-container">
-          <img className="profile-photo" alt="foto diego" src={DiegoImg} />
+      <div className="row justify-content-center">
+        <div className="col-md-3 align-self-center bg-white card-border-left">
+          <h1 className="text-center">Hello there!</h1>
+          <p>
+            My name is Diego Centeno and I'm a fullstack developer. I enjoy
+            working on difficult problems and strive to deliver performant,
+            maintainable and testable code.
+          </p>
+          <p>
+            Amittedly, I prefer to work on backend/devops solutions, however,
+            I'm also proficient in frontend frameworks. Feel free to look at
+            some of the projects I have contributed to and don't think twice
+            about contacting me!
+          </p>
+        </div>
+        <div className="col-2 bg-white card-border-right">
+          <div className="profile-photo-container">
+            <img className="profile-photo" alt="foto diego" src={DiegoImg} />
+          </div>
         </div>
       </div>
 
-      <div className="info-container">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo officia,
-          minima provident optio praesentium nesciunt veritatis error minus
-          libero facere. Nostrum assumenda eaque incidunt nulla ea deleniti
-          voluptate consectetur dolores?
-        </p>
+      {/* <div className="info-container">
+
       </div>
 
       <div className="lenguage-container">
@@ -73,7 +82,7 @@ const Home = () => {
           </div>
         </OwlCarousel>
         <Link to="/project/1">View all projects</Link>
-      </div>
+      </div>*/}
     </>
   );
 };

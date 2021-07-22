@@ -3,33 +3,26 @@ import './Header.css';
 const Header = () => {
   return (
     <>
-      <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-          <span class="navbar-brand mb-0 h1">Diego Centeno</span>
-          <ul class="nav justify-content-end">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
-                Active
+      <nav className="navbar bg-light">
+        <div className="container-fluid">
+          <span className="navbar-brand mb-0 h1 nav-title">
+            Diego Centeno
+            <span className="nav-subtitle">Fullstack Developer</span>
+          </span>
+          <ul className="nav justify-content-end">
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                About
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Link
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                Resume
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Link
-              </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link disabled"
-                href="#"
-                tabindex="-1"
-                aria-disabled="true"
-              >
-                Disabled
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                Projects
               </a>
             </li>
           </ul>
