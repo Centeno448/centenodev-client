@@ -1,0 +1,13 @@
+footer {
+  border-top: 3px solid #202a25;
+  background-color: #f8f9fa !important;
+}
+
+.email-link {
+  text-decoration: none;
+  color: inherit !important;
+}
+
+.social-logo {
+  width: 30px;
+}

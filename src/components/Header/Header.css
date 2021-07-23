@@ -1,5 +1,5 @@
 .navbar {
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid #202a25;
 }
 .nav-title {
   font-size: xx-large;
@@ -9,12 +9,21 @@
 .nav-subtitle {
   margin-left: 5px;
   font-size: large;
+  color: #80727b;
 }
 
 .nav-link {
   color: black;
 }
 
-.active {
-  color: #00b4c2;
+.nav-link:hover {
+  color: #89bbfe;
+}
+
+.nav-link:active {
+  color: #89bbfe;
+}
+
+.nav-link:focus {
+  color: #89bbfe;
 }

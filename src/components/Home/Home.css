@@ -1,90 +1,38 @@
 .profile-photo {
-  width: 150px;
+  margin: -23px 0px 0px -12px;
+  max-width: 150px;
 }
 
 .bg-white {
   background-color: #f8f9fa;
 }
 
-.card-border-right {
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-  border-top-right-radius: 10px;
-
-  border-bottom-right-radius: 10px;
+.card {
+  margin-top: 15px;
 }
 
-.card-border-left {
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
-.profile-photo-container {
-  margin-top: 30%;
-  margin-left: 10%;
-}
-
-/* .profile-container {
-  text-align: center;
-  margin: 0 auto;
-}
-
-.profile-photo-container {
-  margin: 0 auto;
-  border: 1px solid black;
-  width: 150px;
-  height: 200px;
-  border-radius: 50%;
+.photo-container {
+  border: 1px solid transparent;
   overflow: hidden;
+  border-radius: 50%;
+  max-width: 150px;
+  max-height: 150px;
 }
 
-.profile-photo {
-  width: 150px;
+.button-container {
+  margin-top: 15px;
 }
 
-.info-container {
-  max-width: 500px;
-  margin: 0 auto;
-  text-align: center;
+.button {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  max-width: 150px;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 7%;
 }
 
-.lenguage-container {
-  margin: 0 auto;
-  max-width: 500px;
-  height: 80px;
+.button:hover {
+  background-color: black;
+  color: white;
 }
-
-.language-title {
-  margin: auto;
-  float: left;
-}
-
-.language-list {
-  float: right;
-}
-
-.framework-container {
-  margin: 0 auto;
-  max-width: 500px;
-  height: 80px;
-}
-
-.framework-title {
-  margin: auto;
-  float: right;
-}
-
-.framework-list {
-  float: left;
-}
-
-.projects-container {
-  border: 1px solid black;
-  margin: 0 auto;
-  text-align: center;
-  max-width: 500px;
-} */
