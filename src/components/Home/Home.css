@@ -36,3 +36,13 @@
   background-color: black;
   color: white;
 }
+
+.social-logo {
+  color: white;
+  width: 30px;
+}
+
+.email-link {
+  text-decoration: none;
+  color: inherit !important;
+}

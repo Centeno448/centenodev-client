@@ -4,6 +4,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { Link } from 'react-router-dom';
+import LinkedInLogo from '../../assets/img/LI-In-Bug.png';
 
 const Home = () => {
   return (
@@ -33,8 +34,35 @@ const Home = () => {
           </p>
         </div>
       </div>
+      <div className="row justify-content-center text-center">
+        <div className="col-sm-3">
+          <p>
+            <b>Email:</b>{' '}
+            <a className="email-link" href="mailto:diegocenteno448@gmail.com">
+              diegocenteno448@gmail.com
+            </a>
+          </p>
+        </div>
+        <div className="col-sm-2">
+          <p>
+            <b>LinkedIn:</b>{' '}
+            <a
+              href="https://www.linkedin.com/in/diego-andres-centeno/"
+              rel="noreferrer"
+              target="_blank"
+              className="align-self-center"
+            >
+              <img
+                src={LinkedInLogo}
+                alt="linked in logo"
+                className="social-logo"
+              />
+            </a>
+          </p>
+        </div>
+      </div>
 
-      <div className="row justify-content-center button-container">
+      <div className="row justify-content-center button-container text-center">
         <Link className="col-md-1" to="/resume">
           <button className="button">Resume</button>
         </Link>
