@@ -5,7 +5,7 @@ const Resume = () => {
     <>
       <div className="row justify-content-center ">
         <div className="col-6 text-center section-title-container">
-          <h5 className="section-title">Experience</h5>
+          <h5>Experience</h5>
         </div>
       </div>
       <div className="row justify-content-center ">
@@ -17,9 +17,9 @@ const Resume = () => {
         </div>
       </div>
       <div className="row justify-content-center">
-        <div className="col-6 content-tasks-container">
+        <div className="col-6">
           <ul>
-            <li className="content-task">Analisis</li>
+            <li>Analisis</li>
             <li>Desarrollo</li>
             <li>Pruebas</li>
           </ul>
@@ -27,7 +27,7 @@ const Resume = () => {
       </div>
       <div className="row justify-content-center ">
         <div className="col-6 text-center section-title-container">
-          <h5 className="section-title">Education</h5>
+          <h5>Education</h5>
         </div>
       </div>
       <div className="row justify-content-center ">
