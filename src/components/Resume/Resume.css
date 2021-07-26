@@ -1,0 +1,22 @@
+.section-title-container {
+  margin-top: 50px;
+  background-color: white;
+  border-bottom: 2px solid black;
+}
+
+.section-title {
+}
+
+.content-title {
+  font-weight: bold;
+}
+
+.content-year {
+  font-weight: bold;
+}
+
+.content-tasks-container {
+}
+
+.content-task {
+}
