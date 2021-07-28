@@ -1,10 +1,7 @@
 import './Home.css';
 import DiegoImg from '../../assets/img/white.png';
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
-import { Link } from 'react-router-dom';
 import LinkedInLogo from '../../assets/img/LI-In-Bug.png';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
