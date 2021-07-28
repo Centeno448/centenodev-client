@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home/Home';
-import ProjectDetails from './components/ProjectDetails';
-import Projects from './components/Projects';
+import ProjectDetails from './components/ProjectDetails/ProjectDetails';
+import Projects from './components/Projects/Projects';
 import Header from './components/Header/Header';
 import Resume from './components/Resume/Resume';
 
