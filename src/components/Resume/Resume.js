@@ -3,6 +3,17 @@ import './Resume.css';
 const Resume = () => {
   return (
     <>
+      <div className="row justify-content-end">
+        <a
+          href="https://juventudedesporto.cplp.org/files/sample-pdf_9359.pdf"
+          download
+          target="_blank"
+          rel="noreferrer"
+          className=" col-md-2 btn btn-primary"
+        >
+          Resume PDF
+        </a>
+      </div>
       <div className="row justify-content-center ">
         <div className="col-6 text-center section-title-container">
           <h5>Experience</h5>
