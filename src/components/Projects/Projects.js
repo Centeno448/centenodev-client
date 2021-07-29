@@ -1,7 +1,17 @@
 import './Projects.css';
-import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as projectsActions from '../../redux/actions/projectActions';
+import { useEffect } from 'react';
+import ProjectCard from './ProjectCard';
 
-const Projects = () => {
+const Projects = ({ projects, error, loading, actions }) => {
+  useEffect(() => {
+    if (projects.length !== 0) return;
+
+    actions.loadProjects();
+  }, [actions, projects.length]);
+
   return (
     <>
       <div className="row">
@@ -10,43 +20,42 @@ const Projects = () => {
       <div className="row">
         <p>Here's some of the projects i've colaborated on</p>
       </div>
-      <div className="row row-cols-4">
-        <div className="col">
-          <div className="card border border-dark">
-            <Link className="no-link-style" to="/project/1">
-              <div className="card-body">
-                <h5 className="card-title text-center">Project 1</h5>
-                <p className="card-text">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Similique maiores, facilis libero ea nobis, sequi, qui eius
-                  perferendis modi expedita facere recusandae natus eos
-                  perspiciatis vero quaerat tempore nulla quae.
-                </p>
-              </div>
-            </Link>
-            <div className="card-body">
-              <a
-                href="https://google.com"
-                rel="noreferrer"
-                target="_blank"
-                className="card-link"
-              >
-                Github repo
-              </a>
-              <a
-                href="https://google.com"
-                rel="noreferrer"
-                target="_blank"
-                className="card-link"
-              >
-                Production Url
-              </a>
-            </div>
+      {loading ? (
+        <>
+          <div className="row justify-content-center text-center">
+            <div className="spinner-border" role="status"></div>
+            <p>
+              <b>Fetching projects...</b>
+            </p>
           </div>
-        </div>
-      </div>
+        </>
+      ) : (
+        <>
+          <div className="row row-cols-4">
+            {projects.map((project) => (
+              <ProjectCard key={project.guid} project={project} />
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 };
 
-export default Projects;
+function mapStateToProps(state) {
+  return {
+    projects: state.projects.projects,
+    error: state.projects.error,
+    loading: state.projects.loading
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      loadProjects: bindActionCreators(projectsActions.loadProjects, dispatch)
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Projects);

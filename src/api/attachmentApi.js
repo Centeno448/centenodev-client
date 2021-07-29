@@ -1,10 +1,9 @@
 import { handleApiError } from './apiUtils';
-
-const baseUrl = process.env.REACT_APP_BASE_API_URL;
+import { BASE_URL } from './apiConfig';
 
 export async function getAllAttachments(projectGuid) {
   const response = await fetch(
-    `${baseUrl}/projects/${projectGuid}/attachments`
+    `${BASE_URL}/projects/${projectGuid}/attachments`
   );
 
   return response;
@@ -12,7 +11,7 @@ export async function getAllAttachments(projectGuid) {
 
 export async function getAttachmentByGuid(projectGuid, attachmentGuid) {
   const response = await fetch(
-    `${baseUrl}/projects/${projectGuid}/attachments/${attachmentGuid}`
+    `${BASE_URL}/projects/${projectGuid}/attachments/${attachmentGuid}`
   );
 
   if (!response.ok) {

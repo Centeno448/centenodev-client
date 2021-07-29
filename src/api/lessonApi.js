@@ -1,9 +1,8 @@
 import { handleApiError } from './apiUtils';
-
-const baseUrl = process.env.REACT_APP_BASE_API_URL;
+import { BASE_URL } from './apiConfig';
 
 export async function getAllLessons(projectGuid) {
-  const response = await fetch(`${baseUrl}/projects/${projectGuid}/lessons`);
+  const response = await fetch(`${BASE_URL}/projects/${projectGuid}/lessons`);
 
   if (!response.ok) {
     handleApiError(response);
@@ -14,7 +13,7 @@ export async function getAllLessons(projectGuid) {
 
 export async function getLessonByGuid(projectGuid, lessonGuid) {
   const response = await fetch(
-    `${baseUrl}/projects/${projectGuid}/lessons/${lessonGuid}`
+    `${BASE_URL}/projects/${projectGuid}/lessons/${lessonGuid}`
   );
 
   if (!response.ok) {
