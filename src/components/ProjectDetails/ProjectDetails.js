@@ -6,6 +6,7 @@ import * as lessonActions from '../../redux/actions/lessonActions';
 import { bindActionCreators } from 'redux';
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import FetchSpinner from '../Shared/FetchSpinner';
 
 const ProjectDetails = ({
   projects,
@@ -86,21 +87,33 @@ const ProjectDetails = ({
               <h3>Lessons Learned</h3>
             </div>
             <div className="row">
-              <ul>
-                {lessons.map((lesson) => (
-                  <li key={lesson.guid}>{lesson.content}</li>
-                ))}
-              </ul>
+              {lessonLoading ? (
+                <FetchSpinner subject="lessons" />
+              ) : (
+                <ul>
+                  {lessons.map((lesson) => (
+                    <li key={lesson.guid}>{lesson.content}</li>
+                  ))}
+                </ul>
+              )}
             </div>
             <div className="row">
               <h3>Attachments</h3>
             </div>
             <div className="row">
-              <ul>
-                {attachments.map((attachment) => (
-                  <li key={attachment.guid}>{attachment.url}</li>
-                ))}
-              </ul>
+              {attachmentLoading ? (
+                <FetchSpinner subject="attachments" />
+              ) : (
+                <ul>
+                  {attachments.map((attachment) => (
+                    <li key={attachment.guid}>
+                      <a href={attachment.url} rel="noreferrer" target="_blank">
+                        {attachment.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
         </>
