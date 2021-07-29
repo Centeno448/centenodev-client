@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as projectsActions from '../../redux/actions/projectActions';
 import { useEffect } from 'react';
 import ProjectCard from './ProjectCard';
+import FetchSpinner from '../Shared/FetchSpinner';
 
 const Projects = ({ projects, error, loading, actions }) => {
   useEffect(() => {
@@ -22,12 +23,7 @@ const Projects = ({ projects, error, loading, actions }) => {
       </div>
       {loading ? (
         <>
-          <div className="row justify-content-center text-center">
-            <div className="spinner-border" role="status"></div>
-            <p>
-              <b>Fetching projects...</b>
-            </p>
-          </div>
+          <FetchSpinner subject="projects" />
         </>
       ) : (
         <>
