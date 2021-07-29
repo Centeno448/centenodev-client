@@ -1,7 +1,7 @@
 import './Projects.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as projectsActions from '../../redux/actions/projectActions';
+import * as projectActions from '../../redux/actions/projectActions';
 import { useEffect } from 'react';
 import ProjectCard from './ProjectCard';
 import FetchSpinner from '../Shared/FetchSpinner';
@@ -49,7 +49,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      loadProjects: bindActionCreators(projectsActions.loadProjects, dispatch)
+      loadProjects: bindActionCreators(projectActions.loadProjects, dispatch)
     }
   };
 }

@@ -15,10 +15,13 @@ export function loadLessonsFail(error) {
 
 export function loadLessons(projectGuid) {
   return async function (dispatch) {
+    dispatch(loadLessonsStart());
+
     const response = await getAllLessons(projectGuid);
 
     if (!response || !response.ok) {
       const status = response ? response.status : 500;
+      console.log(status);
       dispatch(loadLessonsFail(status));
       return;
     }

@@ -6,7 +6,7 @@ const ProjectCard = ({ project }) => {
     <>
       <div className="col">
         <div className="card border border-dark">
-          <Link className="no-link-style" to="/project/1">
+          <Link className="no-link-style" to={`/project/${project.guid}`}>
             <div className="card-body">
               <h5 className="card-title text-center">{project.name}</h5>
               <p className="card-text">{project.description}</p>

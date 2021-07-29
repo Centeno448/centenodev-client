@@ -1,64 +1,139 @@
-const ProjectDetails = () => {
+import { useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import * as projectActions from '../../redux/actions/projectActions';
+import * as attachmentActions from '../../redux/actions/attachmentActions';
+import * as lessonActions from '../../redux/actions/lessonActions';
+import { bindActionCreators } from 'redux';
+import { useState } from 'react';
+import { connect } from 'react-redux';
+
+const ProjectDetails = ({
+  projects,
+  projectError,
+  projectLoading,
+  attachments,
+  attachmentError,
+  attachmentLoading,
+  lessons,
+  lessonError,
+  lessonLoading,
+  actions
+}) => {
+  let { guid } = useParams();
+  const [project, setProject] = useState();
+  const history = useHistory();
+
+  useEffect(() => {
+    if (projects.length === 0) {
+      actions.loadProjects();
+    }
+
+    if (projects.length > 0) {
+      const project = projects.find((project) => project.guid === guid);
+
+      if (!project) {
+        history.push('/notfound');
+        return;
+      }
+
+      setProject(project);
+    }
+  }, [guid, projects, actions, history]);
+
+  useEffect(() => {
+    if (project) {
+      actions.loadLessons(guid);
+      actions.loadAttachments(guid);
+    }
+  }, [project, actions, guid]);
+
   return (
     <>
-      <div className="p-5 shadow border border-dark rounded bg-light">
-        <div className="row">
-          <h2>Project: Nombre de Proyecto</h2>
-        </div>
-        <div className="row">
-          <p className="col-md-6">
-            Github repo:{' '}
-            <a
-              rel="noreferrer"
-              href="https://github.com/Centeno448/edujs-api"
-              target="_blank"
-            >
-              https://github.com/Centeno448/edujs-api
-            </a>
-          </p>
-          <p className="col-md-6">
-            Production Link:{' '}
-            <a
-              rel="noreferrer"
-              href="https://github.com/Centeno448/edujs-api"
-              target="_blank"
-            >
-              https://github.com/Centeno448/edujs-api
-            </a>
-          </p>
-        </div>
-        <div className="row">
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa nihil
-            esse officia quae vel ab explicabo! Totam minima expedita maiores
-            obcaecati accusamus deleniti voluptatum, repudiandae dignissimos.
-            Nostrum recusandae dolore eveniet!
-          </p>
-        </div>
+      {project && (
+        <>
+          <div className="p-5 shadow border border-dark rounded bg-light">
+            <div className="row">
+              <h2>{project.name}</h2>
+            </div>
+            <div className="row">
+              {project.gitRepo && (
+                <>
+                  <p className="col-md-6">
+                    Github repo:{' '}
+                    <a rel="noreferrer" href={project.gitRepo} target="_blank">
+                      {project.gitRepo}
+                    </a>
+                  </p>
+                </>
+              )}
 
-        <div className="row">
-          <h3>Lessons Learned</h3>
-        </div>
-        <div className="row">
-          <ul>
-            <li>ada</li>
-            <li>asdwad</li>
-            <li>123asd2</li>
-          </ul>
-        </div>
-        <div className="row">
-          <h3>Attachments</h3>
-        </div>
-        <div className="row">
-          <ul>
-            <li>ada</li>
-            <li>asdwad</li>
-            <li>123asd2</li>
-          </ul>
-        </div>
-      </div>
+              {project.prodLink && (
+                <>
+                  <p className="col-md-6">
+                    Production Url:{' '}
+                    <a rel="noreferrer" href={project.prodLink} target="_blank">
+                      {project.prodLink}
+                    </a>
+                  </p>
+                </>
+              )}
+            </div>
+            <div className="row">
+              <p>{project.description}</p>
+            </div>
+
+            <div className="row">
+              <h3>Lessons Learned</h3>
+            </div>
+            <div className="row">
+              <ul>
+                {lessons.map((lesson) => (
+                  <li key={lesson.guid}>{lesson.content}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="row">
+              <h3>Attachments</h3>
+            </div>
+            <div className="row">
+              <ul>
+                {attachments.map((attachment) => (
+                  <li key={attachment.guid}>{attachment.url}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };
 
-export default ProjectDetails;
+function mapStateToProps(state) {
+  return {
+    projects: state.projects.projects,
+    projectError: state.projects.error,
+    projectLoading: state.projects.loading,
+    lessons: state.lessons.lessons,
+    lessonError: state.lessons.error,
+    lessonLoading: state.lessons.loading,
+    attachments: state.attachments.attachments,
+    attachmentError: state.attachments.error,
+    attachmentLoading: state.attachments.loading
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      loadProjects: bindActionCreators(projectActions.loadProjects, dispatch),
+      loadAttachments: bindActionCreators(
+        attachmentActions.loadAttachments,
+        dispatch
+      ),
+      loadLessons: bindActionCreators(lessonActions.loadLessons, dispatch)
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectDetails);
