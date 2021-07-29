@@ -3,23 +3,23 @@ import './Resume.css';
 const Resume = () => {
   return (
     <>
-      <div className="row justify-content-end">
+      <div className="row justify-content-center">
         <a
           href="https://juventudedesporto.cplp.org/files/sample-pdf_9359.pdf"
           download
           target="_blank"
           rel="noreferrer"
-          className=" col-md-2 btn btn-primary"
+          className=" col-md-2 resume-btn btn"
         >
           Resume PDF
         </a>
       </div>
       <div className="row justify-content-center ">
         <div className="col-6 text-center section-title-container">
-          <h5>Experience</h5>
+          <h5 className="text-white">Experience</h5>
         </div>
       </div>
-      <div className="row justify-content-center ">
+      <div className="row justify-content-center text-white">
         <div className="col-6">
           <div className="content-title float-md-start">
             Systems Intern - UDLA, Quito
@@ -27,7 +27,7 @@ const Resume = () => {
           <div className="content-year float-md-end">10/2019 - 10/2020</div>
         </div>
       </div>
-      <div className="row justify-content-center">
+      <div className="row justify-content-center text-white">
         <div className="col-6">
           <ul>
             <li>Analisis</li>
@@ -38,10 +38,10 @@ const Resume = () => {
       </div>
       <div className="row justify-content-center ">
         <div className="col-6 text-center section-title-container">
-          <h5>Education</h5>
+          <h5 className="text-white">Education</h5>
         </div>
       </div>
-      <div className="row justify-content-center ">
+      <div className="row justify-content-center text-white">
         <div className="col-6">
           <div className="content-title float-md-start">
             Systems Engineer - UDLA, Quito

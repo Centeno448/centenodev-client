@@ -16,10 +16,12 @@ const Projects = ({ projects, error, loading, actions }) => {
   return (
     <>
       <div className="row">
-        <h3>Projects</h3>
+        <h3 className="text-white">Projects</h3>
       </div>
       <div className="row">
-        <p>Here's some of the projects i've colaborated on</p>
+        <p className="text-white">
+          Here's some of the projects i've colaborated on
+        </p>
       </div>
       {loading ? (
         <>
@@ -27,7 +29,7 @@ const Projects = ({ projects, error, loading, actions }) => {
         </>
       ) : (
         <>
-          <div className="row row-cols-4">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4">
             {projects.map((project) => (
               <ProjectCard key={project.guid} project={project} />
             ))}

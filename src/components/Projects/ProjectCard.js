@@ -8,17 +8,19 @@ const ProjectCard = ({ project }) => {
         <div className="card border border-dark">
           <Link className="no-link-style" to={`/project/${project.guid}`}>
             <div className="card-body">
-              <h5 className="card-title text-center">{project.name}</h5>
-              <p className="card-text">{project.description}</p>
+              <h5 className="card-title text-white text-center">
+                {project.name}
+              </h5>
+              <p className="card-text text-white">{project.description}</p>
             </div>
           </Link>
-          <div className="card-body">
+          <div className="card-body text-white">
             {project.gitRepo && (
               <a
                 href={project.gitRepo}
                 rel="noreferrer"
                 target="_blank"
-                className="card-link"
+                className="card-link text-white"
               >
                 Github repo
               </a>

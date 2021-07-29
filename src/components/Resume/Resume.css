@@ -1,7 +1,7 @@
 .section-title-container {
   margin-top: 50px;
-  background-color: white;
-  border-bottom: 2px solid black;
+  background-color: #005a7a;
+  border-bottom: 2px solid white;
 }
 
 .content-title {
@@ -10,4 +10,16 @@
 
 .content-year {
   font-weight: bold;
+}
+
+.resume-btn {
+  max-width: 150px;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.resume-btn:hover {
+  background-color: white;
+  color: #003c52;
 }

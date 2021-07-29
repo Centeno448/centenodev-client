@@ -1,3 +1,4 @@
+import './ProjectDetails.css';
 import { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import * as projectActions from '../../redux/actions/projectActions';
@@ -52,16 +53,21 @@ const ProjectDetails = ({
     <>
       {project && (
         <>
-          <div className="p-5 shadow border border-dark rounded bg-light">
-            <div className="row">
+          <div className="p-5 shadow border border-dark rounded details-container">
+            <div className="row text-white">
               <h2>{project.name}</h2>
             </div>
-            <div className="row">
+            <div className="row text-white">
               {project.gitRepo && (
                 <>
                   <p className="col-md-6">
                     Github repo:{' '}
-                    <a rel="noreferrer" href={project.gitRepo} target="_blank">
+                    <a
+                      className="text-white"
+                      rel="noreferrer"
+                      href={project.gitRepo}
+                      target="_blank"
+                    >
                       {project.gitRepo}
                     </a>
                   </p>
@@ -70,23 +76,28 @@ const ProjectDetails = ({
 
               {project.prodLink && (
                 <>
-                  <p className="col-md-6">
+                  <p className="col-md-6 text-white">
                     Production Url:{' '}
-                    <a rel="noreferrer" href={project.prodLink} target="_blank">
+                    <a
+                      className="text-white"
+                      rel="noreferrer"
+                      href={project.prodLink}
+                      target="_blank"
+                    >
                       {project.prodLink}
                     </a>
                   </p>
                 </>
               )}
             </div>
-            <div className="row">
+            <div className="row text-white">
               <p>{project.description}</p>
             </div>
 
-            <div className="row">
+            <div className="row text-white">
               <h3>Lessons Learned</h3>
             </div>
-            <div className="row">
+            <div className="row text-white">
               {lessonLoading ? (
                 <FetchSpinner subject="lessons" />
               ) : (
@@ -97,17 +108,22 @@ const ProjectDetails = ({
                 </ul>
               )}
             </div>
-            <div className="row">
+            <div className="row text-white">
               <h3>Attachments</h3>
             </div>
-            <div className="row">
+            <div className="row text-white">
               {attachmentLoading ? (
                 <FetchSpinner subject="attachments" />
               ) : (
                 <ul>
                   {attachments.map((attachment) => (
                     <li key={attachment.guid}>
-                      <a href={attachment.url} rel="noreferrer" target="_blank">
+                      <a
+                        className="text-white"
+                        href={attachment.url}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
                         {attachment.title}
                       </a>
                     </li>

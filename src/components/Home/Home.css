@@ -28,13 +28,14 @@
   margin-bottom: 10px;
   max-width: 150px;
   background-color: transparent;
-  border: 2px solid black;
+  border: 2px solid white;
   border-radius: 7%;
+  color: white;
 }
 
 .button:hover {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: #003c52;
 }
 
 .social-logo {
@@ -45,4 +46,11 @@
 .email-link {
   text-decoration: none;
   color: inherit !important;
+}
+
+.info-container {
+  background-color: #005a7a;
+  padding: 15px;
+  margin: 0 auto;
+  max-width: 900px;
 }

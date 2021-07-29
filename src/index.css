@@ -5,14 +5,15 @@
 }
 
 body {
-  background: rgb(137, 187, 254);
+  /* background: rgb(137, 187, 254);
   background: linear-gradient(
     90deg,
     rgba(137, 187, 254, 1) 0%,
     rgba(35, 206, 107, 1) 100%
-  );
+  ); */
+  background-color: #002d3d;
 }
 
-#root {
-  position: relative;
+.text-white {
+  color: white;
 }
