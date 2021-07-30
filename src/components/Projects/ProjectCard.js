@@ -33,7 +33,7 @@ const ProjectCard = ({ project }) => {
                   href={project.prodLink}
                   rel="noreferrer"
                   target="_blank"
-                  className="card-link"
+                  className="card-link text-white"
                 >
                   Production Url
                 </a>
