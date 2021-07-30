@@ -51,42 +51,51 @@ const ProjectDetails = ({
               <div className="row text-white">
                 <h2>{project.name}</h2>
               </div>
-              <div className="row text-white">
-                {project.gitRepo && (
-                  <>
-                    <p className="col-md-6">
-                      Github repo:{' '}
-                      <a
-                        className="text-white"
-                        rel="noreferrer"
-                        href={project.gitRepo}
-                        target="_blank"
-                      >
-                        {project.gitRepo}
-                      </a>
-                    </p>
-                  </>
-                )}
 
-                {project.prodLink && (
-                  <>
-                    <p className="col-md-6 text-white">
-                      Production Url:{' '}
-                      <a
-                        className="text-white"
-                        rel="noreferrer"
-                        href={project.prodLink}
-                        target="_blank"
-                      >
-                        {project.prodLink}
-                      </a>
-                    </p>
-                  </>
-                )}
-              </div>
               <div className="row text-white">
                 <p>{project.description}</p>
               </div>
+
+              {(project.gitRepo || project.prodLink) && (
+                <>
+                  <div className="row text-white">
+                    <h4>Links</h4>
+                  </div>
+                  <div className="row text-white">
+                    {project.gitRepo && (
+                      <>
+                        <p className="col-md-6">
+                          Github repo:{' '}
+                          <a
+                            className="text-white"
+                            rel="noreferrer"
+                            href={project.gitRepo}
+                            target="_blank"
+                          >
+                            {project.gitRepo}
+                          </a>
+                        </p>
+                      </>
+                    )}
+
+                    {project.prodLink && (
+                      <>
+                        <p className="col-md-6 text-white">
+                          Production Url:{' '}
+                          <a
+                            className="text-white"
+                            rel="noreferrer"
+                            href={project.prodLink}
+                            target="_blank"
+                          >
+                            {project.prodLink}
+                          </a>
+                        </p>
+                      </>
+                    )}
+                  </div>
+                </>
+              )}
 
               <LessonDetails project={project} />
 
