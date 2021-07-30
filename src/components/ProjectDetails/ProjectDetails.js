@@ -1,24 +1,18 @@
 import './ProjectDetails.css';
 import { useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import * as projectActions from '../../redux/actions/projectActions';
-import * as attachmentActions from '../../redux/actions/attachmentActions';
-import * as lessonActions from '../../redux/actions/lessonActions';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import LessonDetails from './LessonDetails';
+import AttachmentDetails from './AttachmentDetails';
+import * as projectActions from '../../redux/actions/projectActions';
 import FetchSpinner from '../Shared/FetchSpinner';
 
 const ProjectDetails = ({
   projects,
   projectError,
   projectLoading,
-  attachments,
-  attachmentError,
-  attachmentLoading,
-  lessons,
-  lessonError,
-  lessonLoading,
   actions
 }) => {
   let { guid } = useParams();
@@ -42,94 +36,61 @@ const ProjectDetails = ({
     }
   }, [guid, projects, actions, history]);
 
-  useEffect(() => {
-    if (project) {
-      actions.loadLessons(guid);
-      actions.loadAttachments(guid);
-    }
-  }, [project, actions, guid]);
-
   return (
     <>
+      {projectLoading && <FetchSpinner subject="project details" />}
       {project && (
         <>
-          <div className="p-5 shadow border border-dark rounded details-container">
-            <div className="row text-white">
-              <h2>{project.name}</h2>
+          <div className="shadow border border-dark rounded details-container">
+            <div className="ps-3 pt-2 align-self-start">
+              <Link to="/projects">
+                <i className="bi bi-arrow-left-circle back-arrow"></i>
+              </Link>
             </div>
-            <div className="row text-white">
-              {project.gitRepo && (
-                <>
-                  <p className="col-md-6">
-                    Github repo:{' '}
-                    <a
-                      className="text-white"
-                      rel="noreferrer"
-                      href={project.gitRepo}
-                      target="_blank"
-                    >
-                      {project.gitRepo}
-                    </a>
-                  </p>
-                </>
-              )}
-
-              {project.prodLink && (
-                <>
-                  <p className="col-md-6 text-white">
-                    Production Url:{' '}
-                    <a
-                      className="text-white"
-                      rel="noreferrer"
-                      href={project.prodLink}
-                      target="_blank"
-                    >
-                      {project.prodLink}
-                    </a>
-                  </p>
-                </>
-              )}
-            </div>
-            <div className="row text-white">
-              <p>{project.description}</p>
-            </div>
-
-            <div className="row text-white">
-              <h3>Lessons Learned</h3>
-            </div>
-            <div className="row text-white">
-              {lessonLoading ? (
-                <FetchSpinner subject="lessons" />
-              ) : (
-                <ul>
-                  {lessons.map((lesson) => (
-                    <li key={lesson.guid}>{lesson.content}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-            <div className="row text-white">
-              <h3>Attachments</h3>
-            </div>
-            <div className="row text-white">
-              {attachmentLoading ? (
-                <FetchSpinner subject="attachments" />
-              ) : (
-                <ul>
-                  {attachments.map((attachment) => (
-                    <li key={attachment.guid}>
+            <div className="row px-5 pb-4 pt-2 justify-content-center">
+              <div className="row text-white">
+                <h2>{project.name}</h2>
+              </div>
+              <div className="row text-white">
+                {project.gitRepo && (
+                  <>
+                    <p className="col-md-6">
+                      Github repo:{' '}
                       <a
                         className="text-white"
-                        href={attachment.url}
                         rel="noreferrer"
+                        href={project.gitRepo}
                         target="_blank"
                       >
-                        {attachment.title}
+                        {project.gitRepo}
                       </a>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                    </p>
+                  </>
+                )}
+
+                {project.prodLink && (
+                  <>
+                    <p className="col-md-6 text-white">
+                      Production Url:{' '}
+                      <a
+                        className="text-white"
+                        rel="noreferrer"
+                        href={project.prodLink}
+                        target="_blank"
+                      >
+                        {project.prodLink}
+                      </a>
+                    </p>
+                  </>
+                )}
+              </div>
+              <div className="row text-white">
+                <p>{project.description}</p>
+              </div>
+
+              <LessonDetails project={project} />
+
+              <AttachmentDetails project={project} />
             </div>
           </div>
         </>
@@ -142,25 +103,14 @@ function mapStateToProps(state) {
   return {
     projects: state.projects.projects,
     projectError: state.projects.error,
-    projectLoading: state.projects.loading,
-    lessons: state.lessons.lessons,
-    lessonError: state.lessons.error,
-    lessonLoading: state.lessons.loading,
-    attachments: state.attachments.attachments,
-    attachmentError: state.attachments.error,
-    attachmentLoading: state.attachments.loading
+    projectLoading: state.projects.loading
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      loadProjects: bindActionCreators(projectActions.loadProjects, dispatch),
-      loadAttachments: bindActionCreators(
-        attachmentActions.loadAttachments,
-        dispatch
-      ),
-      loadLessons: bindActionCreators(lessonActions.loadLessons, dispatch)
+      loadProjects: bindActionCreators(projectActions.loadProjects, dispatch)
     }
   };
 }
