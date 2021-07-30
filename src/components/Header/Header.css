@@ -1,19 +1,21 @@
 .navbar {
   border-bottom: 3px solid #202a25;
+  background-color: #005a7a !important;
 }
 .nav-title {
   font-size: xx-large;
   margin: 0px 7px 0px 10px;
+  color: white !important;
 }
 
 .nav-subtitle {
   margin-left: 5px;
   font-size: large;
-  color: #80727b;
+  color: rgb(223, 223, 223);
 }
 
 .nav-link {
-  color: black !important;
+  color: white !important;
 }
 
 .nav-link:hover {
