@@ -14,29 +14,32 @@ const ProjectCard = ({ project }) => {
               <p className="card-text text-white">{project.description}</p>
             </div>
           </Link>
-          <div className="card-body text-white">
-            {project.gitRepo && (
-              <a
-                href={project.gitRepo}
-                rel="noreferrer"
-                target="_blank"
-                className="card-link text-white"
-              >
-                Github repo
-              </a>
-            )}
 
-            {project.prodLink && (
-              <a
-                href={project.prodLink}
-                rel="noreferrer"
-                target="_blank"
-                className="card-link"
-              >
-                Production Url
-              </a>
-            )}
-          </div>
+          {(project.gitRepo || project.prodLink) && (
+            <div className="card-body text-white">
+              {project.gitRepo && (
+                <a
+                  href={project.gitRepo}
+                  rel="noreferrer"
+                  target="_blank"
+                  className="card-link text-white"
+                >
+                  Github repo
+                </a>
+              )}
+
+              {project.prodLink && (
+                <a
+                  href={project.prodLink}
+                  rel="noreferrer"
+                  target="_blank"
+                  className="card-link"
+                >
+                  Production Url
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </>
