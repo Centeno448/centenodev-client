@@ -4,12 +4,16 @@ import ProjectDetails from './components/ProjectDetails/ProjectDetails';
 import Projects from './components/Projects/Projects';
 import Header from './components/Header/Header';
 import Resume from './components/Resume/Resume';
+import { useState } from 'react';
 
 const Routes = () => {
+  const [language, setLanguage] = useState('EN');
+
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Header language={language} setLanguage={setLanguage} />
+
         <div className="container">
           <Switch>
             <Route exact path="/" component={Home} />

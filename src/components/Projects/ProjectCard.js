@@ -11,7 +11,7 @@ const ProjectCard = ({ project }) => {
               <h5 className="card-title text-white text-center">
                 {project.name}
               </h5>
-              <p className="card-text text-white">{project.description}</p>
+              <p className="card-text text-white">{project.description_EN}</p>
             </div>
           </Link>
 

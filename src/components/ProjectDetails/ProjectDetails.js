@@ -53,7 +53,7 @@ const ProjectDetails = ({
               </div>
 
               <div className="row text-white">
-                <p>{project.description}</p>
+                <p>{project.description_EN}</p>
               </div>
 
               {(project.gitRepo || project.prodLink) && (

@@ -2,8 +2,17 @@ import './Home.css';
 import DiegoImg from '../../assets/img/white.png';
 import LinkedInLogo from '../../assets/img/LI-Bug-white.png';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getHomeStrings } from './HomeStrings';
+import { useEffect, useState } from 'react';
 
-const Home = () => {
+const Home = ({ language }) => {
+  const [homeStrings, setHomeStrings] = useState(getHomeStrings(language));
+
+  useEffect(() => {
+    setHomeStrings(getHomeStrings(language));
+  }, [language]);
+
   return (
     <>
       <div className="info-container rounded">
@@ -14,28 +23,19 @@ const Home = () => {
         </div>
         <div className="row justify-content-center">
           <div className="col-sm-10 align-self-center">
-            <h1 className="text-center text-white">Hello there!</h1>
+            <h1 className="text-center text-white">{homeStrings.welcome}</h1>
             <p className="text-white">
-              <b>
-                My name is Diego Centeno and I'm a fullstack developer. I enjoy
-                working on difficult problems and strive to deliver performant,
-                maintainable and testable code.
-              </b>
+              <b>{homeStrings.desc_1}</b>
             </p>
             <p className="text-white">
-              <b>
-                Amittedly, I prefer to work on backend/devops solutions,
-                however, I'm also proficient in frontend frameworks. Feel free
-                to look at some of the projects I have contributed to and don't
-                think twice about contacting me!
-              </b>
+              <b>{homeStrings.desc_2}</b>
             </p>
           </div>
         </div>
         <div className="row justify-content-center text-center">
           <div className="col-md-4">
             <p className="text-white">
-              <b>Email:</b>{' '}
+              <b>{homeStrings.email}:</b>{' '}
               <a className="email-link" href="mailto:diegocenteno448@gmail.com">
                 diegocenteno448@gmail.com
               </a>
@@ -62,10 +62,10 @@ const Home = () => {
 
         <div className="row justify-content-center button-container text-center">
           <Link className="col-md-2" to="/resume">
-            <button className="button">Resume</button>
+            <button className="button">{homeStrings.resume}</button>
           </Link>
           <Link className="col-md-2" to="/projects">
-            <button className="button">Projects</button>
+            <button className="button">{homeStrings.projects}</button>
           </Link>
         </div>
       </div>
@@ -73,4 +73,10 @@ const Home = () => {
   );
 };
 
-export default Home;
+function mapStateToProps(state) {
+  return {
+    language: state.language.language
+  };
+}
+
+export default connect(mapStateToProps)(Home);

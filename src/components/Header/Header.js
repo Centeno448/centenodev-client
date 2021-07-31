@@ -1,7 +1,10 @@
 import './Header.css';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as languageActions from '../../redux/actions/languageActions';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ language, actions }) => {
   return (
     <>
       <nav className="navbar navbar-light navbar-expand-md bg-light">
@@ -11,7 +14,7 @@ const Header = () => {
             <span className="nav-subtitle">Fullstack Developer</span>
           </span>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navBarContent"
@@ -19,25 +22,53 @@ const Header = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            class="collapse navbar-collapse justify-content-end"
+            className="collapse navbar-collapse justify-content-end"
             id="navBarContent"
           >
             <ul className="navbar-nav justify-content-end">
+              <li className="nav-item dropdown">
+                <button
+                  className="nav-link dropdown-toggle lang-dropdown"
+                  id="navbarDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {language}
+                </button>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <button
+                      onClick={() => actions.setLanguage('EN')}
+                      className="dropdown-item lang-option"
+                    >
+                      EN
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => actions.setLanguage('ES')}
+                      className="dropdown-item lang-option"
+                    >
+                      ES
+                    </button>
+                  </li>
+                </ul>
+              </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/">
                   About
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/resume">
+                <Link className="nav-link" to="resume">
                   Resume
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/projects">
+                <Link className="nav-link" to="projects">
                   Projects
                 </Link>
               </li>
@@ -49,4 +80,18 @@ const Header = () => {
   );
 };
 
-export default Header;
+function mapStateToProps(state) {
+  return {
+    language: state.language.language
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      setLanguage: bindActionCreators(languageActions.setLanguage, dispatch)
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
