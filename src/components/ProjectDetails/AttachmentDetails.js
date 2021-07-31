@@ -26,31 +26,35 @@ const AttachmentDetails = ({
 
   return (
     <>
-      <div className="row text-white">
-        <h4>{attachmentDetailsStrings.attachments}</h4>
-      </div>
-      <div className="row text-white">
-        {attachmentLoading ? (
-          <FetchSpinner subject="attachments" />
-        ) : (
-          <ul>
-            {attachments.map((attachment) => (
-              <li key={attachment.guid}>
-                <a
-                  className="text-white"
-                  href={attachment.url}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  {attachment.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
+      {attachments.length > 0 && (
+        <>
+          <div className="row text-white">
+            <h4>{attachmentDetailsStrings.attachments}</h4>
+          </div>
+          <div className="row text-white">
+            {attachmentLoading ? (
+              <FetchSpinner subject="attachments" />
+            ) : (
+              <ul>
+                {attachments.map((attachment) => (
+                  <li key={attachment.guid}>
+                    <a
+                      className="text-white"
+                      href={attachment.url}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {attachment.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
 
-        {attachmentError && <p>{attachmentDetailsStrings.fetchError}</p>}
-      </div>
+            {attachmentError && <p>{attachmentDetailsStrings.fetchError}</p>}
+          </div>
+        </>
+      )}
     </>
   );
 };

@@ -27,24 +27,28 @@ const LessonDetails = ({
 
   return (
     <>
-      {lessonLoading ? (
-        <FetchSpinner subject="lessons" />
-      ) : (
+      {lessons.length > 0 && (
         <>
           <div className="row text-white">
             <h4>{lessonDetailsStrings.lessons}</h4>
           </div>
-          <div className="row text-white">
-            <ul>
-              {lessons.map((lesson) => (
-                <li key={lesson.guid}>{lesson.content_EN}</li>
-              ))}
-            </ul>
-          </div>
+          {lessonLoading ? (
+            <FetchSpinner subject="lessons" />
+          ) : (
+            <>
+              <div className="row text-white">
+                <ul>
+                  {lessons.map((lesson) => (
+                    <li key={lesson.guid}>{lesson.content_EN}</li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          )}
+
+          {lessonError && <p>{lessonDetailsStrings.fetchError}</p>}
         </>
       )}
-
-      {lessonError && <p>{lessonDetailsStrings.fetchError}</p>}
     </>
   );
 };
