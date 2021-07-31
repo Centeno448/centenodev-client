@@ -1,7 +1,27 @@
 import './ProjectCard.css';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getProjectCardStrings } from './ProjectCardStrings';
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, language }) => {
+  function getDescriptionByLang(lang) {
+    return lang === 'EN' ? project.description_EN : project.description_ES;
+  }
+
+  const [projectDescription, setProjectDescription] = useState(
+    getDescriptionByLang(language)
+  );
+
+  const [projectCardStrings, setProjectCardStrings] = useState(
+    getProjectCardStrings(language)
+  );
+
+  useEffect(() => {
+    setProjectDescription(getDescriptionByLang(language));
+    setProjectCardStrings(getProjectCardStrings(language));
+  }, [language]);
+
   return (
     <>
       <div className="col">
@@ -11,7 +31,7 @@ const ProjectCard = ({ project }) => {
               <h5 className="card-title text-white text-center">
                 {project.name}
               </h5>
-              <p className="card-text text-white">{project.description_EN}</p>
+              <p className="card-text text-white">{projectDescription}</p>
             </div>
           </Link>
 
@@ -24,7 +44,7 @@ const ProjectCard = ({ project }) => {
                   target="_blank"
                   className="card-link text-white"
                 >
-                  Github repo
+                  {projectCardStrings.repo}
                 </a>
               )}
 
@@ -35,7 +55,7 @@ const ProjectCard = ({ project }) => {
                   target="_blank"
                   className="card-link text-white"
                 >
-                  Production Url
+                  {projectCardStrings.prod}
                 </a>
               )}
             </div>
@@ -46,4 +66,10 @@ const ProjectCard = ({ project }) => {
   );
 };
 
-export default ProjectCard;
+function mapStateToProps(state) {
+  return {
+    language: state.language.language
+  };
+}
+
+export default connect(mapStateToProps)(ProjectCard);
