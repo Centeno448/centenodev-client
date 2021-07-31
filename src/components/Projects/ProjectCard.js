@@ -2,12 +2,13 @@ import './ProjectCard.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import {
-  getProjectCardStrings,
-  getProjectDescriptionByLang
-} from './ProjectCardStrings';
+import { getProjectCardStrings } from './ProjectCardStrings';
 
 const ProjectCard = ({ project, language }) => {
+  function getProjectDescriptionByLang(lang) {
+    return lang === 'EN' ? project.description_EN : project.description_ES;
+  }
+
   const [projectDescription, setProjectDescription] = useState(
     getProjectDescriptionByLang(language)
   );
@@ -17,9 +18,9 @@ const ProjectCard = ({ project, language }) => {
   );
 
   useEffect(() => {
-    setProjectDescription(getProjectDescriptionByLang(language, project));
+    setProjectDescription(getProjectDescriptionByLang(language));
     setProjectCardStrings(getProjectCardStrings(language));
-  }, [language, project]);
+  }, [language]);
 
   return (
     <>

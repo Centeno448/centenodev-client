@@ -30,7 +30,3 @@ export function getProjectCardStrings(language) {
       return EN_STRINGS;
   }
 }
-
-export function getProjectDescriptionByLang(lang, project) {
-  return lang === 'EN' ? project.description_EN : project.description_ES;
-}
