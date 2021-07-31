@@ -8,16 +8,22 @@ import LessonDetails from './LessonDetails';
 import AttachmentDetails from './AttachmentDetails';
 import * as projectActions from '../../redux/actions/projectActions';
 import FetchSpinner from '../Shared/FetchSpinner';
+import { getProjectDetailsStrings } from './ProjectDetailsStrings';
 
 const ProjectDetails = ({
   projects,
   projectError,
   projectLoading,
-  actions
+  actions,
+  language
 }) => {
   let { guid } = useParams();
   const [project, setProject] = useState();
   const history = useHistory();
+
+  const [projectDetailsStrings, setProjectDetailsStrings] = useState(
+    getProjectDetailsStrings(language)
+  );
 
   useEffect(() => {
     if (projects.length === 0) {
@@ -35,6 +41,10 @@ const ProjectDetails = ({
       setProject(project);
     }
   }, [guid, projects, actions, history]);
+
+  useEffect(() => {
+    setProjectDetailsStrings(getProjectDetailsStrings(language));
+  }, [language]);
 
   return (
     <>
@@ -59,13 +69,13 @@ const ProjectDetails = ({
               {(project.gitRepo || project.prodLink) && (
                 <>
                   <div className="row text-white">
-                    <h4>Links</h4>
+                    <h4>{projectDetailsStrings.links}</h4>
                   </div>
                   <div className="row text-white">
                     {project.gitRepo && (
                       <>
                         <p className="col-md-6">
-                          Github repo:{' '}
+                          {projectDetailsStrings.repo}:{' '}
                           <a
                             className="text-white"
                             rel="noreferrer"
@@ -81,7 +91,7 @@ const ProjectDetails = ({
                     {project.prodLink && (
                       <>
                         <p className="col-md-6 text-white">
-                          Production Url:{' '}
+                          {projectDetailsStrings.prod}:{' '}
                           <a
                             className="text-white"
                             rel="noreferrer"
@@ -112,7 +122,8 @@ function mapStateToProps(state) {
   return {
     projects: state.projects.projects,
     projectError: state.projects.error,
-    projectLoading: state.projects.loading
+    projectLoading: state.projects.loading,
+    language: state.language.language
   };
 }
 
