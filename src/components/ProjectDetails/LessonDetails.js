@@ -2,15 +2,25 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import FetchSpinner from '../Shared/FetchSpinner';
 import * as lessonActions from '../../redux/actions/lessonActions';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { getLessonDetailsStrings } from './LessonDetailsStrings';
 
 const LessonDetails = ({
   project,
   lessons,
   lessonLoading,
   lessonError,
-  actions
+  actions,
+  language
 }) => {
+  const [lessonDetailsStrings, setLessonDetailsStrings] = useState(
+    getLessonDetailsStrings(language)
+  );
+
+  useEffect(() => {
+    setLessonDetailsStrings(getLessonDetailsStrings(language));
+  }, [language]);
+
   useEffect(() => {
     actions.loadLessons(project.guid);
   }, [project, actions]);
@@ -22,19 +32,19 @@ const LessonDetails = ({
       ) : (
         <>
           <div className="row text-white">
-            <h4>Lessons Learned</h4>
+            <h4>{lessonDetailsStrings.lessons}</h4>
           </div>
           <div className="row text-white">
             <ul>
               {lessons.map((lesson) => (
-                <li key={lesson.guid}>{lesson.content}</li>
+                <li key={lesson.guid}>{lesson.content_EN}</li>
               ))}
             </ul>
           </div>
         </>
       )}
 
-      {lessonError && <p>Could not fetch lessons. Please refresh the page.</p>}
+      {lessonError && <p>{lessonDetailsStrings.fetchError}</p>}
     </>
   );
 };
@@ -43,7 +53,8 @@ function mapStateToProps(state) {
   return {
     lessons: state.lessons.lessons,
     lessonError: state.lessons.error,
-    lessonLoading: state.lessons.loading
+    lessonLoading: state.lessons.loading,
+    language: state.language.language
   };
 }
 
