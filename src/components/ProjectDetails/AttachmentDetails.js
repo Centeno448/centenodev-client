@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import FetchSpinner from '../Shared/FetchSpinner';
 import { bindActionCreators } from 'redux';
+import { getAttachmentDetailsStrings } from './AttachmentDetailsStrings';
 import * as attachmentActions from '../../redux/actions/attachmentActions';
 
 const AttachmentDetails = ({
@@ -9,8 +10,16 @@ const AttachmentDetails = ({
   attachments,
   attachmentLoading,
   attachmentError,
-  actions
+  actions,
+  language
 }) => {
+  const [attachmentDetailsStrings, setAttachmentDetailsStrings] = useState(
+    getAttachmentDetailsStrings(language)
+  );
+
+  useEffect(() => {
+    setAttachmentDetailsStrings(getAttachmentDetailsStrings(language));
+  }, [language]);
   useEffect(() => {
     actions.loadAttachments(project.guid);
   }, [project, actions]);
@@ -18,7 +27,7 @@ const AttachmentDetails = ({
   return (
     <>
       <div className="row text-white">
-        <h4>Attachments</h4>
+        <h4>{attachmentDetailsStrings.attachments}</h4>
       </div>
       <div className="row text-white">
         {attachmentLoading ? (
@@ -40,9 +49,7 @@ const AttachmentDetails = ({
           </ul>
         )}
 
-        {attachmentError && (
-          <p>Could not fetch attachments. Please reload the page</p>
-        )}
+        {attachmentError && <p>{attachmentDetailsStrings.fetchError}</p>}
       </div>
     </>
   );
@@ -52,7 +59,8 @@ function mapStateToProps(state) {
   return {
     attachments: state.attachments.attachments,
     attachmentError: state.attachments.error,
-    attachmentLoading: state.attachments.loading
+    attachmentLoading: state.attachments.loading,
+    language: state.language.language
   };
 }
 
