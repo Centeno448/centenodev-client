@@ -3,8 +3,18 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as languageActions from '../../redux/actions/languageActions';
 import { Link } from 'react-router-dom';
+import { getHeaderStrings } from './HeaderStrings';
+import { useState, useEffect } from 'react';
 
 const Header = ({ language, actions }) => {
+  const [headerStrings, setHeaderStrings] = useState(
+    getHeaderStrings(language)
+  );
+
+  useEffect(() => {
+    setHeaderStrings(getHeaderStrings(language));
+  }, [language]);
+
   return (
     <>
       <nav className="navbar navbar-light navbar-expand-md bg-light">
@@ -59,17 +69,17 @@ const Header = ({ language, actions }) => {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/">
-                  About
+                  {headerStrings.about}
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="resume">
-                  Resume
+                  {headerStrings.resume}
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="projects">
-                  Projects
+                  {headerStrings.projects}
                 </Link>
               </li>
             </ul>
