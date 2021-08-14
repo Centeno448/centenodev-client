@@ -6,7 +6,14 @@ import { getProjectCardStrings } from './ProjectCardStrings';
 
 const ProjectCard = ({ project, language }) => {
   function getProjectDescriptionByLang(lang) {
-    return lang === 'EN' ? project.description_EN : project.description_ES;
+    var result =
+      lang === 'EN' ? project.description_EN : project.description_ES;
+
+    if (result.length > 150) {
+      return result.substring(0, 150) + '...';
+    }
+
+    return result;
   }
 
   const [projectDescription, setProjectDescription] = useState(
