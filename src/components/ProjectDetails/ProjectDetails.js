@@ -18,14 +18,22 @@ const ProjectDetails = ({
   language
 }) => {
   let { guid } = useParams();
-  const [project, setProject] = useState();
+  const [project, setProject] = useState(getProject());
   const history = useHistory();
+
+  function getProjectDescriptionByLang(lang) {
+    return lang === 'EN' ? project.description_EN : project.description_ES;
+  }
+
+  const [projectDescription, setProjectDescription] = useState(
+    getProjectDescriptionByLang(language)
+  );
 
   const [projectDetailsStrings, setProjectDetailsStrings] = useState(
     getProjectDetailsStrings(language)
   );
 
-  useEffect(() => {
+  function getProject() {
     if (projects.length === 0) {
       actions.loadProjects();
     }
@@ -38,12 +46,17 @@ const ProjectDetails = ({
         return;
       }
 
-      setProject(project);
+      return project;
     }
-  }, [guid, projects, actions, history]);
+  }
+
+  useEffect(() => {
+    setProject(getProject());
+  }, [guid, projects]);
 
   useEffect(() => {
     setProjectDetailsStrings(getProjectDetailsStrings(language));
+    setProjectDescription(getProjectDescriptionByLang(language));
   }, [language]);
 
   return (
@@ -63,7 +76,7 @@ const ProjectDetails = ({
               </div>
 
               <div className="row text-white">
-                <p>{project.description_EN}</p>
+                <p>{projectDescription}</p>
               </div>
 
               {(project.gitRepo || project.prodLink) && (

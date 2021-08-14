@@ -38,9 +38,13 @@ const LessonDetails = ({
             <>
               <div className="row text-white">
                 <ul>
-                  {lessons.map((lesson) => (
-                    <li key={lesson.guid}>{lesson.content_EN}</li>
-                  ))}
+                  {lessons.map((lesson) =>
+                    language === 'EN' ? (
+                      <li key={lesson.guid}>{lesson.content_EN}</li>
+                    ) : (
+                      <li key={lesson.guid}>{lesson.content_ES}</li>
+                    )
+                  )}
                 </ul>
               </div>
             </>
