@@ -41,9 +41,9 @@ const Resume = ({ language }) => {
       <div className="row justify-content-center text-white">
         <div className="col-6">
           <ul>
-            <li>Analisis</li>
-            <li>Desarrollo</li>
-            <li>Pruebas</li>
+            <li>{resumeStrings.activityUdla1}</li>
+            <li>{resumeStrings.activityUdla2}</li>
+            <li>{resumeStrings.activityUdla3}</li>
           </ul>
         </div>
       </div>
@@ -57,7 +57,7 @@ const Resume = ({ language }) => {
           <div className="content-title float-md-start">
             {resumeStrings.career} - UDLA, Quito
           </div>
-          <div className="content-year float-md-end">09/2016 - 08/2021</div>
+          <div className="content-year float-md-end">08/2021</div>
         </div>
       </div>
     </>
