@@ -16,7 +16,7 @@ const Resume = ({ language }) => {
     <>
       <div className="row justify-content-center">
         <a
-          href="https://juventudedesporto.cplp.org/files/sample-pdf_9359.pdf"
+          href="https://drive.google.com/file/d/1VIEMuMoihKXIrwL1UOR1uRKOzl2QmeOA/view?usp=sharing"
           download
           target="_blank"
           rel="noreferrer"
