@@ -1,5 +1,5 @@
 import './Home.css';
-import DiegoImg from '../../assets/img/white.png';
+import DiegoImg from '../../assets/img/me.png';
 import LinkedInLogo from '../../assets/img/LI-Bug-white.png';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
