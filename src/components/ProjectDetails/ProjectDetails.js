@@ -9,6 +9,7 @@ import AttachmentDetails from './AttachmentDetails';
 import * as projectActions from '../../redux/actions/projectActions';
 import FetchSpinner from '../Shared/FetchSpinner';
 import { getProjectDetailsStrings } from './ProjectDetailsStrings';
+import { useCallback } from 'react';
 
 const ProjectDetails = ({
   projects,
@@ -18,22 +19,9 @@ const ProjectDetails = ({
   language
 }) => {
   let { guid } = useParams();
-  const [project, setProject] = useState(getProject());
   const history = useHistory();
 
-  function getProjectDescriptionByLang(lang) {
-    return lang === 'EN' ? project.description_EN : project.description_ES;
-  }
-
-  const [projectDescription, setProjectDescription] = useState(
-    getProjectDescriptionByLang(language)
-  );
-
-  const [projectDetailsStrings, setProjectDetailsStrings] = useState(
-    getProjectDetailsStrings(language)
-  );
-
-  function getProject() {
+  const getProject = useCallback(() => {
     if (projects.length === 0) {
       actions.loadProjects();
     }
@@ -48,16 +36,33 @@ const ProjectDetails = ({
 
       return project;
     }
-  }
+  }, [actions, guid, history, projects]);
+
+  const [project, setProject] = useState(getProject());
+
+  const getProjectDescriptionByLang = useCallback(
+    (lang) => {
+      return lang === 'EN' ? project.description_EN : project.description_ES;
+    },
+    [project.description_EN, project.description_ES]
+  );
+
+  const [projectDescription, setProjectDescription] = useState(
+    getProjectDescriptionByLang(language)
+  );
+
+  const [projectDetailsStrings, setProjectDetailsStrings] = useState(
+    getProjectDetailsStrings(language)
+  );
 
   useEffect(() => {
     setProject(getProject());
-  }, [guid, projects]);
+  }, [getProject, guid, projects]);
 
   useEffect(() => {
     setProjectDetailsStrings(getProjectDetailsStrings(language));
     setProjectDescription(getProjectDescriptionByLang(language));
-  }, [language]);
+  }, [getProjectDescriptionByLang, language]);
 
   return (
     <>
