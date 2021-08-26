@@ -1,16 +1,15 @@
-
 # CentenoDev - Client
 
 React SPA to showcase projects i have worked on. Basically a web CV.
 
 SPA hecho con React para mostrar proyectos en los que he trabajado. En escencia, un CV web.
 
-
 ## Tech Stack
 
 - JavaScript
 - React
 - Redux
+
 ## Environment Variables
 
 ### Para ejecutar este proyecto, se requieren las siguientes variables de entorno en un archivo `.env`
@@ -20,10 +19,10 @@ SPA hecho con React para mostrar proyectos en los que he trabajado. En escencia,
 ### To run this project, you will need the following environment variables in your `.env` file
 
 `REACT_APP_BASE_API_URL` - Base URL for REST API
-  
+
 ## Run Locally
 
-### Clone the project   
+### Clone the project
 
 ```bash
   git clone https://github.com/Centeno448/centenodev-client
@@ -52,7 +51,7 @@ Run project
 ```bash
   git clone https://github.com/Centeno448/centenodev-client
 ```
- 
+
 Ir al directorio del proyecto
 
 ```bash
@@ -70,9 +69,13 @@ Ejecutar Proyecto
 ```bash
   npm start
 ```
-  
+
+## Relevant Links
+
+- [Deployed Site](https://centenodev.me/)
+- [Backend Github Repo](https://github.com/Centeno448/centenodev-rest-api)
+- [Backend API Doc](https://api.centenodev.me/index.html)
+
 ## Authors
 
 - [Diego Centeno](https://github.com/Centeno448)
-
-  
