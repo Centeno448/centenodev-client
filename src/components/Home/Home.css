@@ -1,6 +1,11 @@
 .profile-photo {
   margin: -2px 0px 0px -12px;
   max-width: 150px;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .bg-white {

@@ -1,4 +1,7 @@
 // English Strings
+const RESUME_EN_LINK =
+  'https://drive.google.com/file/d/1NS_81bYu1S-rk2d1gdTv-9c0mscdbZhh/view?usp=sharing';
+
 const RESUME_EN = `Resume`;
 
 const EXPERIENCE_EN = `Experience`;
@@ -21,10 +24,14 @@ const EN_STRINGS = {
   activityUdla2: ACTIVITY_2_UDLA_EN,
   activityUdla3: ACTIVITY_3_UDLA_EN,
   education: EDUCATION_EN,
-  career: CAREER_EN
+  career: CAREER_EN,
+  resumeLink: RESUME_EN_LINK
 };
 
 // Spanish Strings
+const RESUME_ES_LINK =
+  'https://drive.google.com/file/d/1VIEMuMoihKXIrwL1UOR1uRKOzl2QmeOA/view?usp=sharing';
+
 const RESUME_ES = `Currículum`;
 
 const EXPERIENCE_ES = `Experiencia`;
@@ -47,7 +54,8 @@ const ES_STRINGS = {
   activityUdla2: ACTIVITY_2_UDLA_ES,
   activityUdla3: ACTIVITY_3_UDLA_ES,
   education: EDUCATION_ES,
-  career: CAREER_ES
+  career: CAREER_ES,
+  resumeLink: RESUME_ES_LINK
 };
 
 export function getResumeStrings(language) {

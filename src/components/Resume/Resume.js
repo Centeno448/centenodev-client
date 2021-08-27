@@ -16,7 +16,7 @@ const Resume = ({ language }) => {
     <>
       <div className="row justify-content-center">
         <a
-          href="https://drive.google.com/file/d/1VIEMuMoihKXIrwL1UOR1uRKOzl2QmeOA/view?usp=sharing"
+          href={resumeStrings.resumeLink}
           download
           target="_blank"
           rel="noreferrer"
